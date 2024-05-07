@@ -15,6 +15,7 @@ export interface NodeModel<T> {
     isSelectable?: boolean
     data?: T
     toBeDeleted?: boolean
+    _path?: string
 }
 
 export interface TreeNode<T> extends NodeModel<T> {
@@ -48,7 +49,7 @@ export interface SlVueTreeProps<T> {
     parentContext?: Context<T>
     rootContext?: any
     allowToggleBranch?: boolean
-    multiSelectKey? : MultiSelectKey[]
+    multiSelectKey?: MultiSelectKey[]
     scrollAreaHeight?: number
     maxScrollSpeed?: number
 }

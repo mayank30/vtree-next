@@ -1,6 +1,6 @@
 <template>
     <div
-        ref="rootRef"
+        ref="xRootRef"
         class="xtree"
         :class="{ 'xtree-root': isRoot }"
         @mousemove="onMousemoveHandler"
@@ -197,7 +197,7 @@ const emit = defineEmits([
 
 // component refs
 const dragInfoRef = ref<HTMLDivElement>()
-const rootRef = ref<HTMLDivElement>()
+const xRootRef = ref<HTMLDivElement>()
 
 // data
 const rootCursorPosition = ref<CursorPosition<T>>(null) as Ref<CursorPosition<T> | null>
@@ -920,7 +920,7 @@ const currentContext: Context<T> = {
     currentNodes,
     cursorPosition,
     emit,
-    ref: rootRef,
+    ref: xRootRef,
     onNodeMousedownHandler,
     onNodeMouseupHandler,
     onMousemoveHandler,

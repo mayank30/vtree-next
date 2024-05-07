@@ -1,16 +1,16 @@
 {
-    "name": "xtree",
+    "name": "@eraa-in/xtree",
+    "publishConfig": {
+        "access": "public"
+    },
     "version": "0.0.0",
-    "description": "draggable tree vue component",
-    "browserslist": "> 0.25%, not dead",
-    "type": "module",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/kcsujeet/xtree"
+    "author": {
+        "name": "Mayank",
+        "email": "mayankjhawar18@gmail.com",
+        "url": "https://eraa.in"
     },
     "files": [
-        "dist",
-        "src/components"
+        "dist"
     ],
     "main": "dist/xtree.umd.cjs",
     "module": "dist/xtree.js",
@@ -45,7 +45,6 @@
         "draggable",
         "sortable"
     ],
-    "author": "kcsujeet",
     "license": "MIT",
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.0.3",

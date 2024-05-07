@@ -1,6 +1,7 @@
 <template>
     <div class="bg-red-50 p-2 mb-4">
         Last event: <b>{{ lastEvent }}</b>
+        <input type="text" v-model="demo" />
     </div>
     <div class="flex gap-x-4">
         <div class="w-1/6 px-2">
@@ -50,7 +51,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { XTree } from './components'
 import type { Context, TreeNode } from './components'
-
+const demo = ref("asasd")
 interface DataType {
     visible?: boolean
 }
