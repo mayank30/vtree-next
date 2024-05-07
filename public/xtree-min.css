@@ -1,4 +1,4 @@
-.XTree {
+.xtree {
     position: relative;
     cursor: default;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -9,48 +9,48 @@
     user-select: none;
 }
 
-.XTree-root > .XTree-nodes-list {
+.xtree-root > .xtree-nodes-list {
     overflow: hidden;
     position: relative;
     padding-bottom: 4px;
 }
 
-.XTree-selected > .XTree-node-item {
+.xtree-selected > .xtree-node-item {
     background-color: rgba(100, 100, 255, 0.5);
 }
 
-.XTree-node-list {
+.xtree-node-list {
     position: relative;
     display: flex;
     flex-direction: row;
 }
 
-.XTree-node-item {
+.xtree-node-item {
     position: relative;
     display: flex;
     flex-direction: row;
 }
-.XTree-node-item.XTree-cursor-inside {
+.xtree-node-item.xtree-cursor-inside {
     outline: 1px solid rgba(100, 100, 255, 0.5);
 }
 
-.XTree-gap {
+.xtree-gap {
     width: 20px;
     min-height: 1px;
 }
 
-.XTree-sidebar {
+.xtree-sidebar {
     margin-left: auto;
 }
 
-.XTree-cursor {
+.xtree-cursor {
     position: absolute;
     border: 1px solid rgba(100, 100, 255, 0.5);
     height: 1px;
     width: 100%;
 }
 
-.XTree-drag-info {
+.xtree-drag-info {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0.5;

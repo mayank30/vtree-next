@@ -1,20 +1,20 @@
 <template>
     <div
         ref="rootRef"
-        class="XTree"
-        :class="{ 'XTree-root': isRoot }"
+        class="xtree"
+        :class="{ 'xtree-root': isRoot }"
         @mousemove="onMousemoveHandler"
         @mouseleave="onMouseleaveHandler"
     >
-        <div ref="nodes" class="XTree-nodes-list">
+        <div ref="nodes" class="xtree-nodes-list">
             <div
-                class="XTree-node"
+                class="xtree-node"
                 v-for="(node, nodeInd) in currentNodes"
-                :class="{ 'XTree-selected': node.isSelected }"
+                :class="{ 'xtree-selected': node.isSelected }"
                 :key="nodeInd+'_node'"
             >
                 <div
-                    class="XTree-cursor XTree-cursor_before"
+                    class="xtree-cursor xtree-cursor_before"
                     @dragover.prevent
                     :style="{
                         visibility:
@@ -30,7 +30,7 @@
                 </div>
 
                 <div
-                    class="XTree-node-item"
+                    class="xtree-node-item"
                     @mousedown="onNodeMousedownHandler($event, node)"
                     @mouseup="onNodeMouseupHandler($event, node)"
                     @contextmenu="emitNodeContextmenu(node, $event)"
@@ -40,19 +40,19 @@
                     @drop="onExternalDropHandler(node, $event)"
                     :path="node.pathStr"
                     :class="{
-                        'XTree-cursor-hover': cursorPosition && cursorPosition.node.pathStr === node.pathStr,
+                        'xtree-cursor-hover': cursorPosition && cursorPosition.node.pathStr === node.pathStr,
 
-                        'XTree-cursor-inside':
+                        'xtree-cursor-inside':
                             cursorPosition &&
                             cursorPosition.placement === 'inside' &&
                             cursorPosition.node.pathStr === node.pathStr,
-                        'XTree-node-is-leaf': node.isLeaf,
-                        'XTree-node-is-folder': !node.isLeaf,
+                        'xtree-node-is-leaf': node.isLeaf,
+                        'xtree-node-is-folder': !node.isLeaf,
                     }"
                 >
-                    <div class="XTree-gap" v-for="gapInd,i in gaps" :key="'gap'+i"></div>
+                    <div class="xtree-gap" v-for="gapInd,i in gaps" :key="'gap'+i"></div>
 
-                    <div class="XTree-branch" v-if="level && showBranches">
+                    <div class="xtree-branch" v-if="level && showBranches">
                         <slot name="branch" :node="node">
                             <span v-if="!node.isLastChild">
                                 {{ String.fromCharCode(0x251c) }}{{ String.fromCharCode(0x2500) }}&nbsp;
@@ -63,9 +63,9 @@
                         </slot>
                     </div>
 
-                    <div class="XTree-title">
+                    <div class="xtree-title">
                         <span
-                            class="XTree-toggle"
+                            class="xtree-toggle"
                             v-if="!node.isLeaf"
                             @click="onToggleHandler($event, node)"
                         >
@@ -86,7 +86,7 @@
                         </slot>
                     </div>
 
-                    <div class="XTree-sidebar">
+                    <div class="xtree-sidebar">
                         <slot name="sidebar" :node="node"></slot>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                 </XTree>
 
                 <div
-                    class="XTree-cursor XTree-cursor_after"
+                    class="xtree-cursor xtree-cursor_after"
                     @dragover.prevent
                     :style="{
                         visibility:
@@ -148,7 +148,7 @@
                 </div>
             </div>
 
-            <div v-show="isDragging" v-if="isRoot" ref="dragInfoRef" class="XTree-drag-info">
+            <div v-show="isDragging" v-if="isRoot" ref="dragInfoRef" class="xtree-drag-info">
                 <slot name="draginfo"> Items: {{ selectionSize }} </slot>
             </div>
         </div>
