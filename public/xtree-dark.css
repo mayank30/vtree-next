@@ -1,4 +1,4 @@
-.XTree {
+.xtree {
     position: relative;
     cursor: default;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -9,30 +9,30 @@
     user-select: none;
 }
 
-.XTree.XTree-root {
+.xtree.xtree-root {
     border: 1px solid rgb(9, 22, 29);
     background-color: rgb(9, 22, 29);
     color: rgba(255, 255, 255, 0.5);
     border-radius: 3px;
 }
 
-.XTree-root > .XTree-nodes-list {
+.xtree-root > .xtree-nodes-list {
     overflow: hidden;
     position: relative;
     padding-bottom: 4px;
 }
 
-.XTree-selected > .XTree-node-item {
+.xtree-selected > .xtree-node-item {
     background-color: #13242d;
     color: white;
 }
 
-.XTree-node-item:hover,
-.XTree-node-item.XTree-cursor-hover {
+.xtree-node-item:hover,
+.xtree-node-item.xtree-cursor-hover {
     color: white;
 }
 
-.XTree-node-item {
+.xtree-node-item {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -43,33 +43,33 @@
     border: 1px solid transparent;
 }
 
-.XTree-node-item.XTree-cursor-inside {
+.xtree-node-item.xtree-cursor-inside {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.XTree-gap {
+.xtree-gap {
     width: 25px;
     min-height: 1px;
 }
 
-.XTree-toggle {
+.xtree-toggle {
     display: inline-block;
     text-align: left;
     width: 20px;
 }
 
-.XTree-sidebar {
+.xtree-sidebar {
     margin-left: auto;
 }
 
-.XTree-cursor {
+.xtree-cursor {
     position: absolute;
     border: 1px solid rgba(255, 255, 255, 0.5);
     height: 1px;
     width: 100%;
 }
 
-.XTree-drag-info {
+.xtree-drag-info {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0.5;

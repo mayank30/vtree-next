@@ -11,7 +11,7 @@
                 class="xtree-node"
                 v-for="(node, nodeInd) in currentNodes"
                 :class="{ 'xtree-selected': node.isSelected }"
-                :key="nodeInd+'_node'"
+                :key="nodeInd + '_node'"
             >
                 <div
                     class="xtree-cursor xtree-cursor_before"
@@ -50,7 +50,7 @@
                         'xtree-node-is-folder': !node.isLeaf,
                     }"
                 >
-                    <div class="xtree-gap" v-for="gapInd,i in gaps" :key="'gap'+i"></div>
+                    <div class="xtree-gap" v-for="(gapInd, i) in gaps" :key="'gap' + i"></div>
 
                     <div class="xtree-branch" v-if="level && showBranches">
                         <slot name="branch" :node="node">
@@ -64,11 +64,7 @@
                     </div>
 
                     <div class="xtree-title">
-                        <span
-                            class="xtree-toggle"
-                            v-if="!node.isLeaf"
-                            @click="onToggleHandler($event, node)"
-                        >
+                        <span class="xtree-toggle" v-if="!node.isLeaf" @click="onToggleHandler($event, node)">
                             <slot name="toggle" :node="node">
                                 <span>
                                     {{ !node.isLeaf ? (node.isExpanded ? '-' : '+') : '' }}
@@ -149,7 +145,10 @@
             </div>
 
             <div v-show="isDragging" v-if="isRoot" ref="dragInfoRef" class="xtree-drag-info">
-                <slot name="draginfo"> Items: {{ selectionSize }} </slot>
+                <slot name="draginfo">
+                    <span v-if="selectionSize > 2">Drag Items : {{ selectionSize }}</span>
+                    <span v-else> {{ lastSelectedNode?.title }}</span>
+                </slot>
             </div>
         </div>
     </div>
@@ -805,7 +804,7 @@ const getSelected = () => {
  * @param {TreeNode} source
  * @param {TreeNode} target
  * @returns {boolean}
-*/
+ */
 const isChild = (source: TreeNode<T>, target: TreeNode<T>) => {
     return JSON.stringify(source.path.slice(0, target.path.length)) === target.pathStr
 }

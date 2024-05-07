@@ -6,9 +6,8 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
-    @apply text-sm relative;
+    @apply text-sm relative text-slate-600;
 }
-
 .xtree-root > .xtree-nodes-list {
     overflow: hidden;
     position: relative;
@@ -16,7 +15,7 @@
 }
 
 .xtree-selected > .xtree-node-item {
-    @apply bg-slate-200 rounded;
+    @apply bg-slate-200 rounded !text-slate-900 hover:shadow-md cursor-move;
 }
 
 .xtree-node-list {
@@ -29,15 +28,14 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    @apply my-1;
+    @apply my-1 mx-1;
 }
 .xtree-node-item.xtree-cursor-inside {
     @apply outline-dashed outline-slate-400;
 }
 
 .xtree-gap {
-    width: 20px;
-    min-height: 1px;
+    @apply w-4 min-h-1;
 }
 
 .xtree-sidebar {
@@ -45,7 +43,7 @@
 }
 
 .xtree-cursor {
-    @apply absolute border border-slate-200 h-1 rounded bg-slate-200 w-full;
+    @apply absolute outline-dashed outline-slate-400 bg-slate-100 h-1 w-full -mt-1;
 }
 
 .xtree-drag-info {

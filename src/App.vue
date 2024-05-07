@@ -1,7 +1,9 @@
 <template>
-    <div class="bg-red-500">Last event: {{ lastEvent }}</div>
-    <div class="row">
-        <div class="col-6">
+    <div class="bg-red-50 p-2 mb-4">
+        Last event: <b>{{ lastEvent }}</b>
+    </div>
+    <div class="flex gap-x-4">
+        <div class="w-1/6 px-2">
             <XTree
                 v-model="nodes"
                 ref="xtreeRef"
@@ -14,21 +16,21 @@
             >
                 <template #title="{ node }">
                     <span class="ml-1 text-slate-900">
-                        <i class="far fa-file" v-if="node.isLeaf"></i>
-                        <i class="far fa-file-invoice" v-if="!node.isLeaf"></i>
+                        <i class="fat fa-file" v-if="node.isLeaf"></i>
+                        <i class="fat fa-file-invoice" v-if="!node.isLeaf"></i>
                     </span>
-
                     {{ node.title }}
                 </template>
                 <template #toggle="{ node }">
-                    <span v-if="!node.isLeaf">
+                    <span v-if="!node.isLeaf && node.children.length > 0" class="mr-1 cursor-pointer">
                         <i v-if="node.isExpanded" class="far fa-minus"></i>
                         <i v-if="!node.isExpanded" class="far fa-plus"></i>
                     </span>
+                    <span v-else></span>
                 </template>
 
                 <template #sidebar="{ node }">
-                    <span class="visible-icon" @click="(event) => toggleVisibility(event, node)">
+                    <span class="ml-2 cursor-pointer" @click="(event) => toggleVisibility(event, node)">
                         <i v-if="!node.data || node.data.visible !== false" class="far fa-eye"></i>
                         <i v-if="node.data && node.data.visible === false" class="far fa-eye-slash"></i>
                     </span>
@@ -36,8 +38,8 @@
             </XTree>
         </div>
 
-        <div class="col-6">
-            <div class="json-preview">
+        <div class="w-full">
+            <div class="bg-slate-100 text-xs p-8  overflow-y-auto h-[calc(100vh-4rem)]">
                 <pre>{{ JSON.stringify(nodes, null, 4) }}</pre>
             </div>
         </div>
@@ -157,30 +159,4 @@ const onArrowDownHandler = (event) => {
 
 <style>
 @import '/xtree-min.css';
-.row {
-    @apply flex;
-}
-
-.col-6 {
-    flex-grow: 1;
-    max-width: 50%;
-    position: relative;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
-.json-preview {
-    padding: 1em;
-    background-color: #f8f9fa;
-    border-radius: 0.25em;
-    overflow: auto;
-}
-
-.last-event {
-    color: white;
-    background-color: rgba(100, 100, 255, 0.5);
-    padding: 10px;
-    border-radius: 2px;
-    margin-bottom: 10px;
-}
 </style>
