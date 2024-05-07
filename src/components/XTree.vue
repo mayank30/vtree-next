@@ -310,6 +310,7 @@ const getNode = (
     const isSelectable = nodeModel.isSelectable == void 0 ? true : !!nodeModel.isSelectable
 
     const node: TreeNode<T> = {
+        ...nodeModel,
         // define the all TreeNodeModel props
         title: nodeModel.title,
         isLeaf: !!nodeModel.isLeaf,

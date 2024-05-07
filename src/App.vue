@@ -20,7 +20,7 @@
                         <i class="fat fa-file" v-if="node.isLeaf"></i>
                         <i class="fat fa-file-invoice" v-if="!node.isLeaf"></i>
                     </span>
-                    {{ node.title }}
+                    <span @click="onClick(node)">{{ node.title }}</span>
                 </template>
                 <template #toggle="{ node }">
                     <span v-if="!node.isLeaf && node.children.length > 0" class="mr-1 cursor-pointer">
@@ -40,7 +40,7 @@
         </div>
 
         <div class="w-full">
-            <div class="bg-slate-100 text-xs p-8  overflow-y-auto h-[calc(100vh-4rem)]">
+            <div class="bg-slate-100 text-xs p-8 overflow-y-auto h-[calc(100vh-4rem)]">
                 <pre>{{ JSON.stringify(nodes, null, 4) }}</pre>
             </div>
         </div>
@@ -51,13 +51,17 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { XTree } from './components'
 import type { Context, TreeNode } from './components'
-const demo = ref("asasd")
+const demo = ref('asasd')
 interface DataType {
     visible?: boolean
 }
 
+const onClick = (n) => {
+    debugger;
+}
+
 const nodes = ref<TreeNode<DataType>[]>([
-    { title: 'Item1', isLeaf: true },
+    { title: 'Item1', isLeaf: true, _path: 'ddd' },
     { title: 'Item2', isLeaf: true, data: { visible: false } },
     { title: 'Folder1' },
     {
