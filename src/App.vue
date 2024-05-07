@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-6">
-            <sl-vue-tree-next
+            <XTree
                 v-model="nodes"
                 ref="slVueTree"
                 :allow-multiselect="true"
@@ -35,7 +35,7 @@
                         <i v-if="node.data && node.data.visible === false" class="fa fa-eye-slash"></i>
                     </span>
                 </template>
-            </sl-vue-tree-next>
+            </XTree>
         </div>
 
         <div class="col-6">
@@ -48,8 +48,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { SlVueTreeNext } from './components/SlVueTreeNext'
-import type { Context, TreeNode } from './components/SlVueTreeNext'
+import { XTree } from './components'
+import type { Context, TreeNode } from './components'
 
 interface DataType {
     visible?: boolean
@@ -158,7 +158,7 @@ const onArrowDownHandler = (event) => {
 </script>
 
 <style>
-@import '/sl-vue-tree-next-minimal.css';
+@import '/xtree-min.css';
 .logo {
     height: 6em;
     padding: 1.5em;

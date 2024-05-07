@@ -14,8 +14,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
-            name: 'SLVueTreeNext',
-            fileName: 'sl-vue-tree-next',
+            name: 'xtree',
+            fileName: 'xtree',
         },
         outDir: 'dist',
         rollupOptions: {

@@ -1,4 +1,4 @@
-.sl-vue-tree-next {
+.XTree {
     position: relative;
     cursor: default;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -9,30 +9,30 @@
     user-select: none;
 }
 
-.sl-vue-tree-next.sl-vue-tree-next-root {
+.XTree.XTree-root {
     border: 1px solid rgb(9, 22, 29);
     background-color: rgb(9, 22, 29);
     color: rgba(255, 255, 255, 0.5);
     border-radius: 3px;
 }
 
-.sl-vue-tree-next-root > .sl-vue-tree-next-nodes-list {
+.XTree-root > .XTree-nodes-list {
     overflow: hidden;
     position: relative;
     padding-bottom: 4px;
 }
 
-.sl-vue-tree-next-selected > .sl-vue-tree-next-node-item {
+.XTree-selected > .XTree-node-item {
     background-color: #13242d;
     color: white;
 }
 
-.sl-vue-tree-next-node-item:hover,
-.sl-vue-tree-next-node-item.sl-vue-tree-next-cursor-hover {
+.XTree-node-item:hover,
+.XTree-node-item.XTree-cursor-hover {
     color: white;
 }
 
-.sl-vue-tree-next-node-item {
+.XTree-node-item {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -43,33 +43,33 @@
     border: 1px solid transparent;
 }
 
-.sl-vue-tree-next-node-item.sl-vue-tree-next-cursor-inside {
+.XTree-node-item.XTree-cursor-inside {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.sl-vue-tree-next-gap {
+.XTree-gap {
     width: 25px;
     min-height: 1px;
 }
 
-.sl-vue-tree-next-toggle {
+.XTree-toggle {
     display: inline-block;
     text-align: left;
     width: 20px;
 }
 
-.sl-vue-tree-next-sidebar {
+.XTree-sidebar {
     margin-left: auto;
 }
 
-.sl-vue-tree-next-cursor {
+.XTree-cursor {
     position: absolute;
     border: 1px solid rgba(255, 255, 255, 0.5);
     height: 1px;
     width: 100%;
 }
 
-.sl-vue-tree-next-drag-info {
+.XTree-drag-info {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0.5;

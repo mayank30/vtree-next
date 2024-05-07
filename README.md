@@ -1,14 +1,14 @@
-# sl-vue-tree-next
+# XTree
 
 Vue3 supported version of sl-vue-tree. A customizable draggable tree component for Vue.js.
 
 ![preview](preview.png)
 
-[demo](https://kcsujeet.github.io/sl-vue-tree-next/demo/index.html)
+[demo](https://kcsujeet.github.io/XTree/demo/index.html)
 
 install
 
-`npm i sl-vue-tree-next`
+`npm i XTree`
 
 
 # Quick start
@@ -16,12 +16,12 @@ install
 
 <template>
     <h2>Vue 3 Tree</h2>
-    <sl-vue-tree-next v-model="nodes" />
+    <XTree v-model="nodes" />
 
 </template>
 
 <script setup lang="ts">
-import { SlVueTreeNext } from 'sl-vue-tree-next'
+import { XTree } from 'XTree'
 
 const nodes = [
     { title: 'Item1', isLeaf: true },
@@ -58,13 +58,13 @@ const nodes = [
 </script>
 
 <style>
-  @import 'sl-vue-tree-next/sl-vue-tree-next-minimal.css';
+  @import 'XTree/XTree-minimal.css';
 </style>
 ````
 You can also use dark version.
 ```html
 <style>
-  @import 'sl-vue-tree-next/sl-vue-tree-next-dark.css';
+  @import 'XTree/XTree-dark.css';
 </style>
 ```
 
@@ -142,7 +142,7 @@ interface ICursorPosition<TDataType> {
 | nodeclick       | node: TreeNode, event: MouseEvent                                       | handle `click` event on node                      |
 | nodedblclick    | node: TreeNode, event: MouseEvent                                       | handle `dblclick` event on node                   |
 | nodecontextmenu | node: TreeNode, event: MouseEvent                                       | handle `contextmenu` event on node                |
-| externaldrop    | cursorPosition: ICursorPosition, event: MouseEvent                         | handle `drop` event for external items [demo](https://kcsujeet.github.io/sl-vue-tree-next/demo/externaldrag.html)             |
+| externaldrop    | cursorPosition: ICursorPosition, event: MouseEvent                         | handle `drop` event for external items [demo](https://kcsujeet.github.io/XTree/demo/externaldrag.html)             |
 
 # Methods
 
@@ -179,7 +179,7 @@ interface ICursorPosition<TDataType> {
 
 ## Add a folder or item icon via `title` slot
 ````html
-<sl-vue-tree-next v-model="nodes">
+<XTree v-model="nodes">
     <template #title="{ node }">
 
       <span class="item-icon">
@@ -190,7 +190,7 @@ interface ICursorPosition<TDataType> {
       {{ node.title }}
 
     </template>
-</sl-vue-tree-next>
+</XTree>
 
 ````
 

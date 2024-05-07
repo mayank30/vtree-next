@@ -1,32 +1,32 @@
 {
-    "name": "sl-vue-tree-next",
-    "version": "0.0.13",
+    "name": "xtree",
+    "version": "0.0.0",
     "description": "draggable tree vue component",
     "browserslist": "> 0.25%, not dead",
     "type": "module",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kcsujeet/sl-vue-tree-next"
+        "url": "git+https://github.com/kcsujeet/xtree"
     },
     "files": [
         "dist",
         "src/components"
     ],
-    "main": "dist/sl-vue-tree-next.umd.cjs",
-    "module": "dist/sl-vue-tree-next.js",
+    "main": "dist/xtree.umd.cjs",
+    "module": "dist/xtree.js",
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/sl-vue-tree-next.js",
-            "require": "./dist/sl-vue-tree-next.umd.cjs"
+            "import": "./dist/xtree.js",
+            "require": "./dist/xtree.umd.cjs"
         },
-        "./sl-vue-tree-next-minimal.css": {
-            "import": "./dist/sl-vue-tree-next-minimal.css",
-            "require": "./dist/sl-vue-tree-next-minimal.css"
+        "./xtree-min.css": {
+            "import": "./dist/xtree-min.css",
+            "require": "./dist/xtree-min.css"
         },
-        "./sl-vue-tree-next-dark.css": {
-            "import": "./dist/sl-vue-tree-next-dark.css",
-            "require": "./dist/sl-vue-tree-next-dark.css"
+        "./xtree-dark.css": {
+            "import": "./dist/xtree-dark.css",
+            "require": "./dist/xtree-dark.css"
         }
     },
     "scripts": {

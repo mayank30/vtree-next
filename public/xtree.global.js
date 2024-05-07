@@ -5,11 +5,11 @@ const Ie = (p, k) => {
   return p;
 }, ne = (p) => p && typeof p == "object" && !Array.isArray(p), We = window.Vue.defineComponent, Be = window.Vue.renderList, Ee = window.Vue.Fragment, m = window.Vue.openBlock, N = window.Vue.createElementBlock, le = window.Vue.withModifiers, _e = window.Vue.normalizeStyle, V = window.Vue.createElementVNode, C = window.Vue.renderSlot, b = window.Vue.toDisplayString, D = window.Vue.createCommentVNode, se = window.Vue.createTextVNode, re = window.Vue.normalizeClass, Ge = window.Vue.resolveComponent, F = window.Vue.withCtx, Qe = window.Vue.createBlock, Ze = window.Vue.vShow, et = window.Vue.withDirectives, tt = {
   ref: "nodes",
-  class: "sl-vue-tree-next-nodes-list"
-}, ot = ["onMousedown", "onMouseup", "onContextmenu", "onDblclick", "onClick", "onDragover", "onDrop", "path"], nt = { class: "sl-vue-tree-next-gap" }, lt = {
+  class: "xtree-nodes-list"
+}, ot = ["onMousedown", "onMouseup", "onContextmenu", "onDblclick", "onClick", "onDragover", "onDrop", "path"], nt = { class: "xtree-gap" }, lt = {
   key: 0,
-  class: "sl-vue-tree-next-branch"
-}, st = { key: 0 }, rt = { key: 1 }, it = { class: "sl-vue-tree-next-title" }, at = ["onClick"], ut = { class: "sl-vue-tree-next-sidebar" }, S = window.Vue.ref, ct = window.Vue.onMounted, dt = window.Vue.onBeforeUnmount, ft = window.Vue.watchEffect, _ = window.Vue.computed, pt = /* @__PURE__ */ We({
+  class: "xtree-branch"
+}, st = { key: 0 }, rt = { key: 1 }, it = { class: "xtree-title" }, at = ["onClick"], ut = { class: "xtree-sidebar" }, S = window.Vue.ref, ct = window.Vue.onMounted, dt = window.Vue.onBeforeUnmount, ft = window.Vue.watchEffect, _ = window.Vue.computed, pt = /* @__PURE__ */ We({
   __name: "SlVueTreeNext",
   props: {
     modelValue: { default: () => [] },
@@ -372,16 +372,16 @@ const Ie = (p, k) => {
       return m(), N("div", {
         ref_key: "rootRef",
         ref: ae,
-        class: re(["sl-vue-tree-next", { "sl-vue-tree-next-root": f.value }]),
+        class: re(["xtree", { "xtree-root": f.value }]),
         onMousemove: pe,
         onMouseleave: Ye
       }, [
         V("div", tt, [
           (m(!0), N(Ee, null, Be(j.value, (o, s) => (m(), N("div", {
-            class: re(["sl-vue-tree-next-node", { "sl-vue-tree-next-selected": o.isSelected }])
+            class: re(["xtree-node", { "xtree-selected": o.isSelected }])
           }, [
             V("div", {
-              class: "sl-vue-tree-next-cursor sl-vue-tree-next-cursor_before",
+              class: "xtree-cursor xtree-cursor_before",
               onDragover: t[0] || (t[0] = le(() => {
               }, ["prevent"])),
               style: _e({
@@ -390,11 +390,11 @@ const Ie = (p, k) => {
               })
             }, null, 36),
             V("div", {
-              class: re(["sl-vue-tree-next-node-item", {
-                "sl-vue-tree-next-cursor-hover": d.value && d.value.node.pathStr === o.pathStr,
-                "sl-vue-tree-next-cursor-inside": d.value && d.value.placement === "inside" && d.value.node.pathStr === o.pathStr,
-                "sl-vue-tree-next-node-is-leaf": o.isLeaf,
-                "sl-vue-tree-next-node-is-folder": !o.isLeaf
+              class: re(["xtree-node-item", {
+                "xtree-cursor-hover": d.value && d.value.node.pathStr === o.pathStr,
+                "xtree-cursor-inside": d.value && d.value.placement === "inside" && d.value.node.pathStr === o.pathStr,
+                "xtree-node-is-leaf": o.isLeaf,
+                "xtree-node-is-folder": !o.isLeaf
               }]),
               onMousedown: (l) => Se(l, o),
               onMouseup: (l) => Q(l, o),
@@ -415,7 +415,7 @@ const Ie = (p, k) => {
               V("div", it, [
                 o.isLeaf ? D("", !0) : (m(), N("span", {
                   key: 0,
-                  class: "sl-vue-tree-next-toggle",
+                  class: "xtree-toggle",
                   onClick: (l) => Me(l, o)
                 }, [
                   C(e.$slots, "toggle", { node: o }, () => [
@@ -471,7 +471,7 @@ const Ie = (p, k) => {
               _: 2
             }, 1032, ["model-value", "level", "parent-ind", "allow-multiselect", "allow-toggle-branch", "edge-size", "show-branches", "root-context"])) : D("", !0),
             V("div", {
-              class: "sl-vue-tree-next-cursor sl-vue-tree-next-cursor_after",
+              class: "xtree-cursor xtree-cursor_after",
               onDragover: t[2] || (t[2] = le(() => {
               }, ["prevent"])),
               style: _e({
@@ -484,7 +484,7 @@ const Ie = (p, k) => {
             key: 0,
             ref_key: "dragInfoRef",
             ref: L,
-            class: "sl-vue-tree-next-drag-info"
+            class: "xtree-drag-info"
           }, [
             C(e.$slots, "draginfo", {}, () => [
               se(" Items: " + b(de.value), 1)
@@ -498,5 +498,5 @@ const Ie = (p, k) => {
   }
 });
 export {
-  pt as SlVueTreeNext
+  pt as XTree
 };

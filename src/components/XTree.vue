@@ -1,19 +1,20 @@
 <template>
     <div
         ref="rootRef"
-        class="sl-vue-tree-next"
-        :class="{ 'sl-vue-tree-next-root': isRoot }"
+        class="XTree"
+        :class="{ 'XTree-root': isRoot }"
         @mousemove="onMousemoveHandler"
         @mouseleave="onMouseleaveHandler"
     >
-        <div ref="nodes" class="sl-vue-tree-next-nodes-list">
+        <div ref="nodes" class="XTree-nodes-list">
             <div
-                class="sl-vue-tree-next-node"
+                class="XTree-node"
                 v-for="(node, nodeInd) in currentNodes"
-                :class="{ 'sl-vue-tree-next-selected': node.isSelected }"
+                :class="{ 'XTree-selected': node.isSelected }"
+                :key="nodeInd+'_node'"
             >
                 <div
-                    class="sl-vue-tree-next-cursor sl-vue-tree-next-cursor_before"
+                    class="XTree-cursor XTree-cursor_before"
                     @dragover.prevent
                     :style="{
                         visibility:
@@ -29,7 +30,7 @@
                 </div>
 
                 <div
-                    class="sl-vue-tree-next-node-item"
+                    class="XTree-node-item"
                     @mousedown="onNodeMousedownHandler($event, node)"
                     @mouseup="onNodeMouseupHandler($event, node)"
                     @contextmenu="emitNodeContextmenu(node, $event)"
@@ -39,19 +40,19 @@
                     @drop="onExternalDropHandler(node, $event)"
                     :path="node.pathStr"
                     :class="{
-                        'sl-vue-tree-next-cursor-hover': cursorPosition && cursorPosition.node.pathStr === node.pathStr,
+                        'XTree-cursor-hover': cursorPosition && cursorPosition.node.pathStr === node.pathStr,
 
-                        'sl-vue-tree-next-cursor-inside':
+                        'XTree-cursor-inside':
                             cursorPosition &&
                             cursorPosition.placement === 'inside' &&
                             cursorPosition.node.pathStr === node.pathStr,
-                        'sl-vue-tree-next-node-is-leaf': node.isLeaf,
-                        'sl-vue-tree-next-node-is-folder': !node.isLeaf,
+                        'XTree-node-is-leaf': node.isLeaf,
+                        'XTree-node-is-folder': !node.isLeaf,
                     }"
                 >
-                    <div class="sl-vue-tree-next-gap" v-for="gapInd in gaps"></div>
+                    <div class="XTree-gap" v-for="gapInd,i in gaps" :key="'gap'+i"></div>
 
-                    <div class="sl-vue-tree-next-branch" v-if="level && showBranches">
+                    <div class="XTree-branch" v-if="level && showBranches">
                         <slot name="branch" :node="node">
                             <span v-if="!node.isLastChild">
                                 {{ String.fromCharCode(0x251c) }}{{ String.fromCharCode(0x2500) }}&nbsp;
@@ -62,9 +63,9 @@
                         </slot>
                     </div>
 
-                    <div class="sl-vue-tree-next-title">
+                    <div class="XTree-title">
                         <span
-                            class="sl-vue-tree-next-toggle"
+                            class="XTree-toggle"
                             v-if="!node.isLeaf"
                             @click="onToggleHandler($event, node)"
                         >
@@ -85,12 +86,12 @@
                         </slot>
                     </div>
 
-                    <div class="sl-vue-tree-next-sidebar">
+                    <div class="XTree-sidebar">
                         <slot name="sidebar" :node="node"></slot>
                     </div>
                 </div>
 
-                <SlVueTreeNext
+                <XTree
                     v-if="node.children && node.children.length && node.isExpanded"
                     :model-value="node.children"
                     :level="node.level"
@@ -128,10 +129,10 @@
                         >
                         </slot>
                     </template>
-                </SlVueTreeNext>
+                </XTree>
 
                 <div
-                    class="sl-vue-tree-next-cursor sl-vue-tree-next-cursor_after"
+                    class="XTree-cursor XTree-cursor_after"
                     @dragover.prevent
                     :style="{
                         visibility:
@@ -147,7 +148,7 @@
                 </div>
             </div>
 
-            <div v-show="isDragging" v-if="isRoot" ref="dragInfoRef" class="sl-vue-tree-next-drag-info">
+            <div v-show="isDragging" v-if="isRoot" ref="dragInfoRef" class="XTree-drag-info">
                 <slot name="draginfo"> Items: {{ selectionSize }} </slot>
             </div>
         </div>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>sl-vue-tree</title>
-        <link rel="stylesheet" href="../public/sl-vue-tree-next-minimal.css" />
+        <link rel="stylesheet" href="../public/xtree-min.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,13 +15,13 @@
     </head>
     <body>
         <div id="app">
-            <h2>Sl-vue-tree-next - minimal css</h2>
+            <h2>XTree - minimal css</h2>
 
             <a href="./minimal-theme.html" target="_blank">Source code</a>
 
             <div class="row">
                 <div class="tree-container">
-                    <sl-vue-tree-next v-model="nodes" :show-branches="true"></sl-vue-tree-next>
+                    <XTree v-model="nodes" :show-branches="true"></XTree>
                 </div>
 
                 <div class="json-preview">
@@ -31,7 +31,7 @@
         </div>
 
         <script type="module">
-            import { SlVueTreeNext } from '../public/sl-vue-tree-next.global.js'
+            import { XTree } from '../public/xtree.global.js'
 
             const nodes = [
                 { title: 'Item1', isLeaf: true },
@@ -67,7 +67,7 @@
             ]
 
             Vue.createApp({
-                components: { SlVueTreeNext },
+                components: { XTree },
                 data: function () {
                     return {
                         nodes: nodes,

@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>sl-vue-tree-next</title>
-        <link rel="stylesheet" href="../public/sl-vue-tree-next-dark.css" />
+        <title>XTree</title>
+        <link rel="stylesheet" href="../public/xtree-dark.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,11 +15,11 @@
     </head>
     <body>
         <div id="app">
-            <h2>sl-vue-tree-next - drag external elements</h2>
+            <h2>XTree - drag external elements</h2>
 
             <div class="row">
                 <div class="tree-container">
-                    <sl-vue-tree-next v-model="nodes" ref="slVueTree" @externaldrop="onExternalDropHandler">
+                    <XTree v-model="nodes" ref="slVueTree" @externaldrop="onExternalDropHandler">
                         <template #title="{ node }">
                             <span class="item-icon">
                                 <i class="fa-solid fa-file" v-if="node.isLeaf"></i>
@@ -35,7 +35,7 @@
                                 <i v-if="!node.isExpanded" class="fa fa-chevron-right"></i>
                             </span>
                         </template>
-                    </sl-vue-tree-next>
+                    </XTree>
 
                     <div class="dragme" draggable="true">
                         <i class="fa fa-file"></i> <br /><br />
@@ -60,7 +60,7 @@
         </div>
 
         <script type="module">
-            import { SlVueTreeNext } from '../public/sl-vue-tree-next.global.js'
+            import { XTree } from '../public/xtree.global.js'
 
             const nodes = [
                 { title: 'Item1', isLeaf: true },
@@ -81,7 +81,7 @@
             ]
 
             Vue.createApp({
-                components: { SlVueTreeNext },
+                components: { XTree },
                 data: function () {
                     return {
                         nodes: nodes,
@@ -122,7 +122,7 @@
                 flex-grow: 1;
             }
 
-            .sl-vue-tree-next.sl-vue-tree-next-root {
+            .XTree.XTree-root {
                 flex-grow: 1;
                 overflow-x: hidden;
                 overflow-y: auto;

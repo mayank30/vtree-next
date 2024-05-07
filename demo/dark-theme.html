@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>sl-vue-tree-next</title>
-        <link rel="stylesheet" href="../public/sl-vue-tree-next-dark.css" />
+        <title>XTree</title>
+        <link rel="stylesheet" href="../public/xtree-dark.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -15,7 +15,7 @@
     </head>
     <body>
         <div id="app" @click="contextMenuIsVisible = false">
-            <h2>Sl-vue-tree-next - custom dark theme and events handlers</h2>
+            <h2>XTree - custom dark theme and events handlers</h2>
 
             <a href="./dark-theme.html" target="_blank">Source code</a>
             <br /><br />
@@ -24,7 +24,7 @@
 
             <div class="row">
                 <div class="tree-container">
-                    <sl-vue-tree-next
+                    <XTree
                         v-model="nodes"
                         ref="slVueTree"
                         :allow-multiselect="true"
@@ -57,7 +57,7 @@
                         </template>
 
                         <template #draginfo="draginfo"> {{selectedNodesTitle}} </template>
-                    </sl-vue-tree-next>
+                    </XTree>
                 </div>
 
                 <div class="json-preview">
@@ -72,7 +72,7 @@
         </div>
 
         <script type="module">
-            import { SlVueTreeNext } from '../public/sl-vue-tree-next.global.js'
+            import { XTree } from '../public/xtree.global.js'
 
             const nodes = [
                 { title: 'Item1', isLeaf: true },
@@ -108,7 +108,7 @@
             ]
 
             Vue.createApp({
-                components: { SlVueTreeNext },
+                components: { XTree },
                 data: function () {
                     return {
                         nodes: nodes,
@@ -206,7 +206,7 @@
                 flex-grow: 1;
             }
 
-            .sl-vue-tree-next.sl-vue-tree-next-root {
+            .XTree.XTree-root {
                 flex-grow: 1;
                 overflow-x: hidden;
                 overflow-y: auto;
