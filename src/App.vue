@@ -1,12 +1,10 @@
 <template>
-    <h2>Vue 3 Tree</h2>
-    <div class="last-event row">Last event: {{ lastEvent }}</div>
-
+    <div class="bg-red-500">Last event: {{ lastEvent }}</div>
     <div class="row">
         <div class="col-6">
             <XTree
                 v-model="nodes"
-                ref="slVueTree"
+                ref="xtreeRef"
                 :allow-multiselect="true"
                 :max-scroll-speed="10"
                 :scroll-area-height="20"
@@ -15,24 +13,24 @@
                 @toggle="nodeToggled"
             >
                 <template #title="{ node }">
-                    <span class="item-icon">
-                        <i class="fa-solid fa-file" v-if="node.isLeaf"></i>
-                        <i class="fa-solid fa-folder" v-if="!node.isLeaf"></i>
+                    <span class="ml-1 text-slate-900">
+                        <i class="far fa-file" v-if="node.isLeaf"></i>
+                        <i class="far fa-file-invoice" v-if="!node.isLeaf"></i>
                     </span>
 
                     {{ node.title }}
                 </template>
                 <template #toggle="{ node }">
                     <span v-if="!node.isLeaf">
-                        <i v-if="node.isExpanded" class="fa fa-chevron-down"></i>
-                        <i v-if="!node.isExpanded" class="fa fa-chevron-right"></i>
+                        <i v-if="node.isExpanded" class="far fa-minus"></i>
+                        <i v-if="!node.isExpanded" class="far fa-plus"></i>
                     </span>
                 </template>
 
                 <template #sidebar="{ node }">
                     <span class="visible-icon" @click="(event) => toggleVisibility(event, node)">
-                        <i v-if="!node.data || node.data.visible !== false" class="fa fa-eye"></i>
-                        <i v-if="node.data && node.data.visible === false" class="fa fa-eye-slash"></i>
+                        <i v-if="!node.data || node.data.visible !== false" class="far fa-eye"></i>
+                        <i v-if="node.data && node.data.visible === false" class="far fa-eye-slash"></i>
                     </span>
                 </template>
             </XTree>
@@ -91,7 +89,7 @@ const nodes = ref<TreeNode<DataType>[]>([
 // data
 const selectedNodesTitle = ref('')
 const lastEvent = ref('No last event')
-const slVueTree = ref<Context<DataType> | null>(null)
+const xtreeRef = ref<Context<DataType> | null>(null)
 
 //methods
 const nodeSelected = (nodes, event) => {
@@ -110,14 +108,14 @@ const nodeDropped = (nodes, position, event) => {
 }
 
 const removeNode = () => {
-    const paths = slVueTree.value?.getSelected().map((node) => node.path)
-    slVueTree.value?.remove(paths)
+    const paths = xtreeRef.value?.getSelected().map((node) => node.path)
+    xtreeRef.value?.remove(paths)
 }
 
 const toggleVisibility = (event, node) => {
     event.stopPropagation()
     const visible = !node.data || node.data.visible !== false
-    slVueTree.value.updateNode({ path: node.path, patch: { data: { visible: !visible } } })
+    xtreeRef.value.updateNode({ path: node.path, patch: { data: { visible: !visible } } })
     lastEvent.value = `Node ${node.title} is ${!visible ? 'visible' : 'invisible'} now`
 }
 
@@ -133,47 +131,34 @@ const onArrowDownHandler = (event) => {
     event.preventDefault()
     const keyCode = event.code
 
-    if (slVueTree.value.selectionSize === 1) {
-        const selectedNode = slVueTree.value.getSelected()[0]
+    if (xtreeRef.value.selectionSize === 1) {
+        const selectedNode = xtreeRef.value.getSelected()[0]
         let nodeToSelect
 
         if (keyCode === 'ArrowDown') {
-            nodeToSelect = slVueTree.value.getNextNode(selectedNode.path, (node) => node.isVisible)
+            nodeToSelect = xtreeRef.value.getNextNode(selectedNode.path, (node) => node.isVisible)
         } else if (keyCode === 'ArrowUp') {
-            nodeToSelect = slVueTree.value.getPrevNode(selectedNode.path, (node) => node.isVisible)
+            nodeToSelect = xtreeRef.value.getPrevNode(selectedNode.path, (node) => node.isVisible)
         } else if (keyCode === 'Enter' || keyCode === 'Space') {
             if (selectedNode.isLeaf) return
-            slVueTree.value.updateNode({ path: selectedNode.path, patch: { isExpanded: !selectedNode.isExpanded } })
+            xtreeRef.value.updateNode({ path: selectedNode.path, patch: { isExpanded: !selectedNode.isExpanded } })
         }
 
         if (!nodeToSelect) return
 
-        slVueTree.value.select(nodeToSelect.path)
+        xtreeRef.value.select(nodeToSelect.path)
     } else if (keyCode === 'ArrowDown') {
-        slVueTree.value.select(slVueTree.value.getFirstNode().path)
+        xtreeRef.value.select(xtreeRef.value.getFirstNode().path)
     } else if (keyCode === 'ArrowUp') {
-        slVueTree.value.select(slVueTree.value.getLastNode().path)
+        xtreeRef.value.select(xtreeRef.value.getLastNode().path)
     }
 }
 </script>
 
 <style>
 @import '/xtree-min.css';
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
-}
-
 .row {
-    display: flex;
+    @apply flex;
 }
 
 .col-6 {

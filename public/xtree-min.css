@@ -1,5 +1,4 @@
 .xtree {
-    position: relative;
     cursor: default;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -7,6 +6,7 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
+    @apply text-sm relative;
 }
 
 .xtree-root > .xtree-nodes-list {
@@ -16,7 +16,7 @@
 }
 
 .xtree-selected > .xtree-node-item {
-    background-color: rgba(100, 100, 255, 0.5);
+    @apply bg-slate-200 rounded;
 }
 
 .xtree-node-list {
@@ -29,9 +29,10 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    @apply my-1;
 }
 .xtree-node-item.xtree-cursor-inside {
-    outline: 1px solid rgba(100, 100, 255, 0.5);
+    @apply outline-dashed outline-slate-400;
 }
 
 .xtree-gap {
@@ -44,10 +45,7 @@
 }
 
 .xtree-cursor {
-    position: absolute;
-    border: 1px solid rgba(100, 100, 255, 0.5);
-    height: 1px;
-    width: 100%;
+    @apply absolute border border-slate-200 h-1 rounded bg-slate-200 w-full;
 }
 
 .xtree-drag-info {
